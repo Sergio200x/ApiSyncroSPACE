@@ -21,17 +21,35 @@ export const controller= {
                             }
                       
                     },
-    vista_semana_pasada:   async (req,res)=>
+    DATABASE_SPACE:   async (req,res)=>
                     {
                         try {
-                            const pool = await getConettion_tickets()
+                            const pool = await getConettion_empresas()
                             const result=await pool
                              .request()
-                             .query(querys.tick_semana_pasada)
+                             .query(querys.Locales_Database_Space)
                              res.json({
                                  info:{
                                       status:200,
-                                       url:"/semana_pasada"},
+                                       url:"/DATABASE_SPACE"},
+                                       data:result.recordset})
+                            
+                            } catch (error) {
+                            console.log(error)
+                            }
+                      
+                    },
+    LOG_SPACE:   async (req,res)=>
+                    {
+                        try {
+                            const pool = await getConettion_empresas()
+                            const result=await pool
+                             .request()
+                             .query(querys.Locales_Log_Space)
+                             res.json({
+                                 info:{
+                                      status:200,
+                                       url:"/LOG_SPACE"},
                                        data:result.recordset})
                             
                             } catch (error) {
